@@ -11,15 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(Timer);
 
     function seancesDisabled(seanceTime, film, hall, seance) {
+      let day = new Date(Today.getTime());
+      let markTime = Math.trunc(day / 1000);
       if (Timer - seanceTime.replace(/[^+\d]/g, "") < 0) {
         return `<li class="movie-seances__time-block ">
-        <a class="movie-seances__time" href="hall.html" data-film-name="${film.film_name}" data-film-id="${film.film_id}" data-hall-id="${hall.hall_id}" data-hall-name="${hall.hall_name}" data-price-vip="${hall.hall_price_vip}" data-price-standart="${hall.hall_price_standart}" data-seance-id="${seance.seance_id}"  data-seance-start="${seance.seance_start}" data-seance-time="${seance.seance_time}">
+        <a class="movie-seances__time" href="hall.html" data-film-name="${film.film_name}" data-film-id="${film.film_id}" data-hall-id="${hall.hall_id}" data-hall-name="${hall.hall_name}" data-price-vip="${hall.hall_price_vip}" data-price-standart="${hall.hall_price_standart}" data-seance-id="${seance.seance_id}"  data-seance-start="${seance.seance_start}" data-seance-time="${seance.seance_time}" data-seanceTimeStamp="${markTime}">
         ${seanceTime}
       </a>
       </li>`;
       } else {
         `<li class="movie-seances__time-block ">
-      <a class="movie-seances__time acceptin-button-disabled" href="hall.html" data-film-name="${film.film_name}" data-film-id="${film.film_id}" data-hall-id="${hall.hall_id}" data-hall-name="${hall.hall_name}" data-price-vip="${hall.hall_price_vip}" data-price-standart="${hall.hall_price_standart}" data-seance-id="${seance.seance_id}"  data-seance-start="${seance.seance_start}" data-seance-time="${seance.seance_time}">
+      <a class="movie-seances__time acceptin-button-disabled" href="hall.html" data-film-name="${film.film_name}" data-film-id="${film.film_id}" data-hall-id="${hall.hall_id}" data-hall-name="${hall.hall_name}" data-price-vip="${hall.hall_price_vip}" data-price-standart="${hall.hall_price_standart}" data-seance-id="${seance.seance_id}"  data-seance-start="${seance.seance_start}" data-seance-time="${seance.seance_time}" data-seanceTimeStamp="${markTime}">
         ${seanceTime}
       </a>
       </li>`;
@@ -56,13 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
           });
 
           setTimeout(() => {
-
             let movieSeances = Array.from(
               document.querySelectorAll(".movie-seances__time")
             );
-          
+
             console.log(movieSeances);
-          
+
             movieSeances.forEach((movieSeance) =>
               movieSeance.addEventListener("click", (event) => {
                 let selectedSeance = event.target.dataset;
@@ -70,10 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
                   (hall) => hall.hall_id == selectedSeance.hallId
                 ).hall_config;
                 console.log(selectedSeance);
-                localStorage.setItem("selectedSeance", JSON.stringify(selectedSeance));
+                localStorage.setItem(
+                  "selectedSeance",
+                  JSON.stringify(selectedSeance)
+                );
               })
             );
-            },100)
+          }, 100);
         }
       }
       let hallSeances = "";
@@ -121,8 +125,6 @@ ${hallSeances}
     }
   });
 
-  let sss = document.querySelectorAll(".movie-seances__time");
-
   let DNum = document.querySelectorAll(".page-nav__day-number");
 
   let DWeek = document.querySelectorAll(".page-nav__day-week");
@@ -147,8 +149,6 @@ ${hallSeances}
   }
 
   let dayLinks = Array.from(document.querySelectorAll(".page-nav__day"));
-  console.log(sss);
-
 
   dayLinks.forEach((dayLink) =>
     dayLink.addEventListener("click", (event) => {
