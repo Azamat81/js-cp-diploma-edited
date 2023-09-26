@@ -54,7 +54,7 @@ QR-код c уникальным кодом бронирования, в кот�
 <li>QRCreator.js - JavaScript библиотека для создания QR-кодов.
 </ul>
 <h2>GitHub Pages</h2>
-Проект доступен на GitHub Pages по следующей ссылке: https://github.com/Azamat81/js-cp-diploma-edited.git
+Проект доступен на GitHub Pages по следующей ссылке: https://azamat81.github.io/js-cp-diploma-edited/
 
 <h2>Задание</h2>
 Исходный проект задания: https://github.com/VladaIsakova/js-cp-diploma-edited/
