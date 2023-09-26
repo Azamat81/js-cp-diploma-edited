@@ -1,6 +1,6 @@
 let selectedSeance = JSON.parse(localStorage.selectedSeance);
 
-let request = `event=get_hallConfig&timestamp=${selectedSeance.seanceTimeStamp}&hallId=${selectedSeance.hallId}&seanceId=${selectedSeance.seanceId}`;
+let request = `event=get_hallConfig&timestamp=${selectedSeance.seanceTime}&hallId=${selectedSeance.hallId}&seanceId=${selectedSeance.seanceId}`;
 
 document.addEventListener("DOMContentLoaded", () => {
   let acceptinButton = document.querySelector(".acceptin-button");
